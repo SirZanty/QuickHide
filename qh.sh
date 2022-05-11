@@ -1,9 +1,26 @@
 #!/bin/bash
+#By SirZanty
 
-cli_log() {
-  script_name=${0##*/}
-  timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-  echo "== $script_name $timestamp $1"
+# To implement logs
+#cli_log() {
+#  script_name=${0##*/}
+#  timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+#  echo "== $script_name $timestamp $1"
+#}
+
+help_message(){
+        echo "QuickHide version: QuickHide/1.0"
+        echo "Usage: QuickHide [-h] [-e bytes] [-d byte_number] [-p path]"
+        echo "Options:"
+        printf "\t-h             : this help\n"
+        printf "\t-e bytes       : bytes string to add to the head file\n"
+        printf "\t-d byte_number : bytes number to remove from the head file\n"
+        printf "\t-p path        : path of directory to hide\n"
+        printf "\n\tExample:\n"
+        printf "\tqh.sh -h                     - this help\n"
+        printf "\tqh.sh -p /tmp -e bytes       - hide all files of tmp path adding bytes to head\n"
+        printf "\tqh.sh -p /tmp -d 2           - show all files of tmp path removing the first two bytes\n"
+        exit 
 }
 
 path=""
@@ -15,18 +32,7 @@ case $1 in
     -h)
     if [[ $# = 1 ]]
     then 
-        echo "QuickHide version: QuickHide/1.0"
-        echo "Usage: QuickHide [-h] [-e bytes] [-d byte_number] [-p path]"
-        echo "Options:"
-        printf "\t-h             : this help\n"
-        printf "\t-e bytes       : bytes string to add to the head file\n"
-        printf "\t-d byte_number : bytes number to remove from the head file\n"
-        printf "\t-p path        : path of directory to hide\n"  
-        printf "\n\tExample:\n"
-        printf "\tqh.sh -h                     - this help\n"
-        printf "\tqh.sh -p /tmp -e bytes       - hide all files of tmp path adding bytes to head\n" 
-        printf "\tqh.sh -p /tmp -d 2           - show all files of tmp path removing the first two bytes\n"
-        exit
+	help_message
     else
         echo "Error with args!"
         exit
@@ -48,6 +54,9 @@ case $1 in
         echo "Error with args!"
         exit
     fi
+    ;;
+    *)
+	help_message
     ;;
 esac
 
