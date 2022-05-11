@@ -18,8 +18,8 @@ help_message(){
         printf "\t-p path        : path of directory to hide\n"
         printf "\n\tExample:\n"
         printf "\tqh.sh -h                     - this help\n"
-        printf "\tqh.sh -p /tmp -e bytes       - hide all files of tmp path adding bytes to head\n"
-        printf "\tqh.sh -p /tmp -d 2           - show all files of tmp path removing the first two bytes\n"
+        printf "\tqh.sh -p /tmp -e 1           - hide all files of tmp path adding 1 byte to head\n"
+        printf "\tqh.sh -p /tmp -d 1           - show all files of tmp path removing the first byte\n"
         exit 
 }
 
